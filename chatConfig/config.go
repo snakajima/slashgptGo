@@ -8,7 +8,7 @@ type Config struct {
 	OpenAIKey string
 }
 
-func Create() Config {
+func New() Config {
   key := os.Getenv("OPENAI_API_KEY")
   return Config{key}
 }

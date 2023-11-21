@@ -12,7 +12,7 @@ func main() {
   fmt.Println(m.Title)    
   fmt.Println(m.Prompt)
 
-  c := chatConfig.Create()
-  s := chatSession.Create(c)
+  c := chatConfig.New()
+  s := chatSession.New(c)
   fmt.Println(s.Config.OpenAIKey)
 }

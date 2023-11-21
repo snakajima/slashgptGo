@@ -8,6 +8,6 @@ type Session struct {
   Config chatConfig.Config
 }
 
-func Create(config chatConfig.Config) Session {
+func New(config chatConfig.Config) Session {
   return Session{config}
 }
