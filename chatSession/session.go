@@ -10,31 +10,27 @@ import (
 
 type Session struct {
   Config *chatConfig.Config
-  Manifest *manifest.Manifest 
+  Manifest *manifest.Manifest
+  Messages []openai.ChatCompletionMessage;
 }
 
 func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
-  return &Session{config, m}
-}
-
-func (session *Session) Call_llm() string {
-  systemPrompt := session.Manifest.SystemPrompt()
+  systemPrompt := m.SystemPrompt()
   messages := []openai.ChatCompletionMessage{
     {
       Role: "system",
       Content: systemPrompt,
     },
-    {
-      Role: openai.ChatMessageRoleUser,
-      Content: "Hello.",
-    },
   }
-  fmt.Printf(messages[0].Content)
+  return &Session{config, m, messages}
+}
+
+func (session *Session) Call_llm() string {
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
 			Model: openai.GPT3Dot5Turbo,
-			Messages: messages,
+			Messages: session.Messages,
 		},
 	)
 
@@ -44,4 +40,8 @@ func (session *Session) Call_llm() string {
 	}
 
   return resp.Choices[0].Message.Content
+}
+
+func (session *Session) Append_message(role string, message string) {
+  session.Messages = append(session.Messages, openai.ChatCompletionMessage{Role:role, Content:message})
 }

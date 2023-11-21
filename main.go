@@ -12,7 +12,7 @@ func main() {
 
   c := chatConfig.New()
   s := chatSession.New(c, m)
-
+  s.Append_message("user", "I am not feeling well")
   res := s.Call_llm()
   fmt.Printf(res)
 }
