@@ -17,7 +17,7 @@ func New(config chatConfig.Config, m manifest.Manifest) Session {
   return Session{config, m}
 }
 
-func call_llm(session Session) string {
+func Call_llm(session Session) string {
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -36,6 +36,5 @@ func call_llm(session Session) string {
 		return ""
 	}
 
-	fmt.Println(resp.Choices[0].Message.Content)
   return resp.Choices[0].Message.Content
 }
