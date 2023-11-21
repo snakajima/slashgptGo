@@ -26,7 +26,7 @@ func main() {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "Tell me about Starwars movies!",
+					Content: "Hello.",
 				},
 			},
 		},
