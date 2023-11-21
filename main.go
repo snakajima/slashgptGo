@@ -2,7 +2,7 @@ package main
 
 import (
   "github.com/snakajima/slashgptGo/manifest"
-  "github.com/snakajima/slashgptGo/config"
+  "github.com/snakajima/slashgptGo/chatConfig"
   "fmt"
 )
 
@@ -11,6 +11,6 @@ func main() {
   fmt.Println(m.Title)    
   fmt.Println(m.Prompt)
 
-  c := config.Create()
+  c := chatConfig.Create()
   fmt.Println(c.OpenAIKey)    
 }
