@@ -8,10 +8,11 @@ import (
 
 type Manifest struct {
 	Title string `json:"title"`
+  Prompt string `json:"prompt"`
 }
 
 func Create(title string) Manifest {
-    return Manifest{title}
+    return Manifest{title, ""}
 }
 
 func Load(path string) Manifest {

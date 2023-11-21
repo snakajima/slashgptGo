@@ -11,5 +11,6 @@ func main() {
     fmt.Println(m.Title)    
     m2 := manifest.Load("./sample.json")
     fmt.Println(m2.Title)    
+    fmt.Println(m2.Prompt)    
     fmt.Println(greet.Message())
 }
