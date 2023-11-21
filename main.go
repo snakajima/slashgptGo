@@ -9,5 +9,7 @@ import (
 func main() {
     m := manifest.Create("Hello")
     fmt.Println(m.Title)    
+    m2 := manifest.Load("./sample.json")
+    fmt.Println(m2.Title)    
     fmt.Println(greet.Message())
 }
