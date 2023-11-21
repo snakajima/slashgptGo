@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-  m := manifest.Load("./sample.json")
+  m := manifest.New("./sample.json")
   fmt.Println(m.Title)    
   fmt.Println(m.Prompt)
 
