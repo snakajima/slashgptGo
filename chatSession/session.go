@@ -6,7 +6,6 @@ import (
 	"context"
 	"github.com/sashabaranov/go-openai"
   "fmt"
-  "strings"
 )
 
 type Session struct {
@@ -19,7 +18,7 @@ func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
 }
 
 func (session *Session) Call_llm() string {
-  systemPrompt := strings.Join(session.Manifest.Prompt, "\n")
+  systemPrompt := session.Manifest.SystemPrompt()
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{

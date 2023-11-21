@@ -10,7 +10,7 @@ import (
 func main() {
   m := manifest.New("./sample.json")
   fmt.Println(m.Title)    
-  fmt.Println(m.Prompt)
+  fmt.Println(m.SystemPrompt())
 
   c := chatConfig.New()
   s := chatSession.New(c, m)

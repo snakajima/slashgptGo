@@ -4,6 +4,7 @@ import (
   "encoding/json"
   "fmt"
   "io/ioutil"
+  "strings"
 )
 
 type Manifest struct {
@@ -25,4 +26,8 @@ func New(path string) *Manifest {
   }
 
   return &m
+}
+
+func (m *Manifest) SystemPrompt() string {
+  return strings.Join(m.Prompt, "\n")
 }
