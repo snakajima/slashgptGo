@@ -10,10 +10,10 @@ type Config struct {
   Client* openai.Client
 }
 
-func New() Config {
+func New() *Config {
   key := os.Getenv("OPENAI_API_KEY")
   client := openai.NewClient(key)
-  return Config{key, client}
+  return &Config{key, client}
 }
 
 
