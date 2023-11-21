@@ -5,6 +5,7 @@ import (
   "github.com/snakajima/slashgptGo/chatConfig"
   "github.com/snakajima/slashgptGo/chatSession"
   "fmt"
+	"github.com/sashabaranov/go-openai"
 )
 
 func main() {
@@ -12,7 +13,7 @@ func main() {
 
   c := chatConfig.New()
   s := chatSession.New(c, m)
-  s.Append_message("user", "I am not feeling well")
+  s.Append_message(openai.ChatMessageRoleUser, "I am not feeling well")
   res := s.Call_llm()
   fmt.Printf(res)
 }

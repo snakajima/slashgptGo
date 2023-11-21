@@ -17,7 +17,7 @@ type Session struct {
 func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
   messages := []openai.ChatCompletionMessage{
     {
-      Role: "system",
+      Role: openai.ChatMessageRoleSystem,
       Content: m.SystemPrompt(),
     },
   }
