@@ -15,6 +15,6 @@ func main() {
   c := chatConfig.New()
   s := chatSession.New(c, m)
 
-  res := chatSession.Call_llm(s)
+  res := s.Call_llm()
   fmt.Printf(res)
 }

@@ -18,7 +18,7 @@ func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
   return &Session{config, m}
 }
 
-func Call_llm(session *Session) string {
+func (session *Session) Call_llm() string {
   systemPrompt := strings.Join(session.Manifest.Prompt, "\n")
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
