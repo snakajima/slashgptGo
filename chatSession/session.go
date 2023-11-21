@@ -11,10 +11,10 @@ import (
 
 type Session struct {
   Config chatConfig.Config
-  Manifest manifest.Manifest 
+  Manifest *manifest.Manifest 
 }
 
-func New(config chatConfig.Config, m manifest.Manifest) Session {
+func New(config chatConfig.Config, m *manifest.Manifest) Session {
   return Session{config, m}
 }
 

@@ -11,18 +11,18 @@ type Manifest struct {
   Prompt []string `json:"prompt"`
 }
 
-func New(path string) Manifest {
+func New(path string) *Manifest {
   fileBytes, err := ioutil.ReadFile(path)
   if err != nil {
       fmt.Println(err)
-      return Manifest{}
+      return &Manifest{}
   }
   var m Manifest
   err = json.Unmarshal(fileBytes, &m)
   if err != nil {
       fmt.Println(err)
-      return Manifest{}
+      return &Manifest{}
   }
 
-  return m
+  return &m
 }
