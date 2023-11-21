@@ -15,7 +15,7 @@ func main() {
   fmt.Println(m.Prompt)
 
   c := chatConfig.New()
-  s := chatSession.New(c)
+  s := chatSession.New(c, m)
   fmt.Println(s.Config.OpenAIKey)
 
 	client := openai.NewClient(s.Config.OpenAIKey)
