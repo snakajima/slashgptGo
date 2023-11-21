@@ -15,12 +15,11 @@ func main() {
 
   c := chatConfig.New()
   s := chatSession.New(c, m)
-  fmt.Println("You: ")
+  fmt.Print("You: ")
   scanner := bufio.NewScanner(os.Stdin)
   scanner.Scan()
   message := scanner.Text()
-  fmt.Println(message)
   s.Append_message(openai.ChatMessageRoleUser, message)
   res := s.Call_llm()
-  fmt.Printf(res)
+  fmt.Println("GPT:", res)
 }
