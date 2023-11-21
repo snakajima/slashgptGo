@@ -14,11 +14,11 @@ type Session struct {
   Manifest *manifest.Manifest 
 }
 
-func New(config *chatConfig.Config, m *manifest.Manifest) Session {
-  return Session{config, m}
+func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
+  return &Session{config, m}
 }
 
-func Call_llm(session Session) string {
+func Call_llm(session *Session) string {
   systemPrompt := strings.Join(session.Manifest.Prompt, "\n")
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
