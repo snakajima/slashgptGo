@@ -11,10 +11,6 @@ type Manifest struct {
   Prompt string `json:"prompt"`
 }
 
-func Create(title string) Manifest {
-    return Manifest{title, ""}
-}
-
 func Load(path string) Manifest {
   fileBytes, err := ioutil.ReadFile(path)
   if err != nil {
