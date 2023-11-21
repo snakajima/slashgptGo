@@ -19,20 +19,22 @@ func New(config *chatConfig.Config, m *manifest.Manifest) *Session {
 
 func (session *Session) Call_llm() string {
   systemPrompt := session.Manifest.SystemPrompt()
+  messages := []openai.ChatCompletionMessage{
+    {
+      Role: "system",
+      Content: systemPrompt,
+    },
+    {
+      Role: openai.ChatMessageRoleUser,
+      Content: "Hello.",
+    },
+  }
+  fmt.Printf(messages[0].Content)
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
 			Model: openai.GPT3Dot5Turbo,
-			Messages: []openai.ChatCompletionMessage{
-        {
-          Role: "system",
-          Content: systemPrompt,
-        },
-				{
-					Role:    openai.ChatMessageRoleUser,
-					Content: "Hello.",
-				},
-			},
+			Messages: messages,
 		},
 	)
 
