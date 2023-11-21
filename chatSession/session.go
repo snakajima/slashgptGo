@@ -6,6 +6,7 @@ import (
 	"context"
 	"github.com/sashabaranov/go-openai"
   "fmt"
+  "strings"
 )
 
 type Session struct {
@@ -18,11 +19,16 @@ func New(config chatConfig.Config, m manifest.Manifest) Session {
 }
 
 func Call_llm(session Session) string {
+  systemPrompt := strings.Join(session.Manifest.Prompt, "\n")
 	resp, err := session.Config.Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
 			Model: openai.GPT3Dot5Turbo,
 			Messages: []openai.ChatCompletionMessage{
+        {
+          Role: "system",
+          Content: systemPrompt,
+        },
 				{
 					Role:    openai.ChatMessageRoleUser,
 					Content: "Hello.",

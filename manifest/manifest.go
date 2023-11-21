@@ -8,7 +8,7 @@ import (
 
 type Manifest struct {
 	Title string `json:"title"`
-  Prompt string `json:"prompt"`
+  Prompt []string `json:"prompt"`
 }
 
 func New(path string) Manifest {
